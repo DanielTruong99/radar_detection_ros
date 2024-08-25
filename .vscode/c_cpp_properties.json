@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/noetic/include/**",
+        "/opt/openrobots/include/**",
+        "/home/ryz2/catkin_ws/src/libtorch_demo/include/**",
+        "/usr/include/**",
+        "/home/ryz2/DanielWorkspace/libtorch/include/**",
+        "/home/ryz2/DanielWorkspace/libtorch/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

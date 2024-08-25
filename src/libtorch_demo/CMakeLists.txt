@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.0.2)
+project(libtorch_demo)
+
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} /home/ryz2/DanielWorkspace/libtorch)
+
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  std_msgs
+)
+
+find_package(Torch REQUIRED)
+
+catkin_package()
+
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+  ${TORCH_INCLUDE_DIRS}
+)
+
+add_executable(demo_torch_node src/demo_node.cpp)
+
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=1)
+target_link_libraries(demo_torch_node PUBLIC ${catkin_LIBRARIES} ${TORCH_LIBRARIES})
+
+message(STATUS "CATKIN_PACKAGE_SHARE_DESTINATION: ${CATKIN_PACKAGE_SHARE_DESTINATION}")
+
+install(FILES models/colision_detector.pt
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models
+)
