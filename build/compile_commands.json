@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/ryz2/catkin_ws/build/libtorch_demo",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"libtorch_demo\\\" -D_GLIBCXX_USE_CXX11_ABI=1 -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector -isystem /home/ryz2/DanielWorkspace/libtorch/include -isystem /home/ryz2/DanielWorkspace/libtorch/include/torch/csrc/api/include  -g   -D_GLIBCXX_USE_CXX11_ABI=1 -o CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o -c /home/ryz2/catkin_ws/src/libtorch_demo/src/demo_node.cpp",
+  "file": "/home/ryz2/catkin_ws/src/libtorch_demo/src/demo_node.cpp"
+},
+{
+  "directory": "/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector",
+  "command": "/usr/bin/c++  -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\\\"libtorch_demo\\\" -D_GLIBCXX_USE_CXX11_ABI=1 -I/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /home/ryz2/DanielWorkspace/libtorch/include -isystem /home/ryz2/DanielWorkspace/libtorch/include/torch/csrc/api/include  -g   -D_GLIBCXX_USE_CXX11_ABI=1 -o CMakeFiles/ColisionDetector.dir/ColisionDetector.cpp.o -c /home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/ColisionDetector.cpp",
+  "file": "/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/ColisionDetector.cpp"
+}
+]

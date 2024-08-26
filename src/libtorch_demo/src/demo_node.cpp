@@ -3,7 +3,7 @@
 #include <chrono>
 #include "ColisionDetector/ColisionDetector.h"
 
-#define MEASURE_INFERENCE_TIME 1
+#define MEASURE_INFERENCE_TIME 0
 
 class DemoNode
 {
@@ -38,7 +38,7 @@ class DemoNode
             float threshold = 0.5;
             bool is_colision = false;
 
-            #if MEASURE_INFERENCE_TIME  
+            #if MEASURE_INFERENCE_TIME 
                 auto start = std::chrono::high_resolution_clock::now();
             #endif
 

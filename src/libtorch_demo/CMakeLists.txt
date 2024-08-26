@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(libtorch_demo)
 
+message("CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} /home/ryz2/DanielWorkspace/libtorch)
 
 find_package(catkin REQUIRED COMPONENTS
