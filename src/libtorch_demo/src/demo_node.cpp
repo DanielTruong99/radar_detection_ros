@@ -1,8 +1,7 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include "torch/torch.h"
-#include "torch/csrc/jit/serialization/import.h"
 #include <chrono>
+#include "ColisionDetector/ColisionDetector.h"
 
 #define MEASURE_INFERENCE_TIME 1
 
@@ -16,32 +15,17 @@ class DemoNode
             //* Create a timer that calls the timerCallback function every 1.0 second
             _timer = _node_handler.createTimer(ros::Duration(1.0), &DemoNode::timerCallback, this);
 
-            /*
-                ! Load the model
-                  * Load the model from the file
-                  * Set the model to evaluation mode
-                  * Set the model to run on the CPU
-                  * Disable gradient calculation
-            */
-            try
-            {
-                _colision_detector = torch::jit::load("/home/ryz2/catkin_ws/src/libtorch_demo/models/colision_detector.pt");
-           }
-           catch(const c10::Error& e)
-           {
-               ROS_ERROR("Error loading the model: %s", e.what());
+           //* Create colsion detector
+            _colision_detector = colision_detector::ColisionDetector();
 
-           }
-           _colision_detector.eval();
-           _colision_detector.to(at::kCPU);
-           torch::NoGradGuard no_grad;
+            ROS_INFO("Demo node is ready");
         }
     
     private:
         ros::NodeHandle _node_handler;
         ros::Publisher _publisher;
         ros::Timer _timer;
-        torch::jit::script::Module _colision_detector;
+        colision_detector::ColisionDetector _colision_detector;
 
         void timerCallback(const ros::TimerEvent& event)
         {
@@ -57,18 +41,8 @@ class DemoNode
             #if MEASURE_INFERENCE_TIME  
                 auto start = std::chrono::high_resolution_clock::now();
             #endif
-            /*
-                ! Run the model
-                  * Create a tensor from the input data
-                  * Create a vector of IValues
-                  * Forward pass
-                  * Compute the output tensor with threshold
-            */
-            torch::Tensor input_tensor = torch::tensor({v, alpha, d}).unsqueeze(0);
-            std::vector<torch::jit::IValue> inputs;
-            inputs.push_back(input_tensor);
-            torch::Tensor output = _colision_detector.forward(inputs).toTensor();
-            is_colision = output.item<float>() > threshold;
+
+            is_colision = _colision_detector.detectColision(v, alpha, d, threshold);
 
             #if MEASURE_INFERENCE_TIME
                 auto end = std::chrono::high_resolution_clock::now();

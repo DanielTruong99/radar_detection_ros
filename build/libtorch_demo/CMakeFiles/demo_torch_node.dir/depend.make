@@ -399,6 +399,7 @@ libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o: /home/ryz2/Dan
 libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o: /home/ryz2/DanielWorkspace/libtorch/include/torch/custom_class_detail.h
 libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o: /home/ryz2/DanielWorkspace/libtorch/include/torch/extension.h
 libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o: /home/ryz2/DanielWorkspace/libtorch/include/torch/library.h
+libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o: /home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/ColisionDetector.h
 libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o: /home/ryz2/catkin_ws/src/libtorch_demo/src/demo_node.cpp
 libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o: /opt/ros/noetic/include/ros/advertise_options.h
 libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o: /opt/ros/noetic/include/ros/advertise_service_options.h

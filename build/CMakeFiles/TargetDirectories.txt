@@ -58,3 +58,11 @@
 /home/ryz2/catkin_ws/build/libtorch_demo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
 /home/ryz2/catkin_ws/build/libtorch_demo/CMakeFiles/roscpp_generate_messages_lisp.dir
 /home/ryz2/catkin_ws/build/libtorch_demo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
+/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/install/strip.dir
+/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/install/local.dir
+/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/install.dir
+/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/list_install_components.dir
+/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/rebuild_cache.dir
+/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/edit_cache.dir
+/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/test.dir
+/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/ColisionDetector.dir

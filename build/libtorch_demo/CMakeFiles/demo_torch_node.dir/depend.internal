@@ -400,6 +400,7 @@ libtorch_demo/CMakeFiles/demo_torch_node.dir/src/demo_node.cpp.o
  /home/ryz2/DanielWorkspace/libtorch/include/torch/custom_class_detail.h
  /home/ryz2/DanielWorkspace/libtorch/include/torch/extension.h
  /home/ryz2/DanielWorkspace/libtorch/include/torch/library.h
+ /home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/ColisionDetector.h
  /home/ryz2/catkin_ws/src/libtorch_demo/src/demo_node.cpp
  /opt/ros/noetic/include/ros/advertise_options.h
  /opt/ros/noetic/include/ros/advertise_service_options.h

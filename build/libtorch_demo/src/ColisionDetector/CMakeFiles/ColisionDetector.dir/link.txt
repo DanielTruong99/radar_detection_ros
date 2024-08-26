@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/ryz2/catkin_ws/devel/lib/libColisionDetector.a  CMakeFiles/ColisionDetector.dir/ColisionDetector.cpp.o
+/usr/bin/ranlib /home/ryz2/catkin_ws/devel/lib/libColisionDetector.a

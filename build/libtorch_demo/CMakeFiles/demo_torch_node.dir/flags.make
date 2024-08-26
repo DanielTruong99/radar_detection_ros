@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -D_GLIBCXX_USE_CXX11_ABI=1
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"libtorch_demo\" -D_GLIBCXX_USE_CXX11_ABI=1
 
-CXX_INCLUDES = -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -isystem /home/ryz2/DanielWorkspace/libtorch/include -isystem /home/ryz2/DanielWorkspace/libtorch/include/torch/csrc/api/include 
+CXX_INCLUDES = -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector -isystem /home/ryz2/DanielWorkspace/libtorch/include -isystem /home/ryz2/DanielWorkspace/libtorch/include/torch/csrc/api/include 
 

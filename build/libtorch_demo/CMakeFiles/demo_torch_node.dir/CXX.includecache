@@ -5004,17 +5004,23 @@ ATen/core/op_registration/op_registration.h
 torch/custom_class.h
 -
 
+/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/ColisionDetector.h
+ros/ros.h
+/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/ros/ros.h
+torch/torch.h
+/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/torch/torch.h
+torch/csrc/jit/serialization/import.h
+/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/torch/csrc/jit/serialization/import.h
+
 /home/ryz2/catkin_ws/src/libtorch_demo/src/demo_node.cpp
 ros/ros.h
 /home/ryz2/catkin_ws/src/libtorch_demo/src/ros/ros.h
 std_msgs/String.h
 /home/ryz2/catkin_ws/src/libtorch_demo/src/std_msgs/String.h
-torch/torch.h
-/home/ryz2/catkin_ws/src/libtorch_demo/src/torch/torch.h
-torch/csrc/jit/serialization/import.h
-/home/ryz2/catkin_ws/src/libtorch_demo/src/torch/csrc/jit/serialization/import.h
 chrono
 -
+ColisionDetector/ColisionDetector.h
+/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/ColisionDetector.h
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h

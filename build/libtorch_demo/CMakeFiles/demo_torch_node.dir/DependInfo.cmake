@@ -20,12 +20,14 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector"
   "/home/ryz2/DanielWorkspace/libtorch/include"
   "/home/ryz2/DanielWorkspace/libtorch/include/torch/csrc/api/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/CMakeFiles/ColisionDetector.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

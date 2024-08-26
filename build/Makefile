@@ -492,6 +492,19 @@ rosgraph_msgs_generate_messages_py/fast:
 	$(MAKE) -f libtorch_demo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make libtorch_demo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
+#=============================================================================
+# Target rules for targets named ColisionDetector
+
+# Build rule for target.
+ColisionDetector: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ColisionDetector
+.PHONY : ColisionDetector
+
+# fast build rule for target.
+ColisionDetector/fast:
+	$(MAKE) -f libtorch_demo/src/ColisionDetector/CMakeFiles/ColisionDetector.dir/build.make libtorch_demo/src/ColisionDetector/CMakeFiles/ColisionDetector.dir/build
+.PHONY : ColisionDetector/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -530,6 +543,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... ColisionDetector"
 .PHONY : help
 
 

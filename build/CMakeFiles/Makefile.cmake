@@ -32,6 +32,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/ryz2/catkin_ws/src/CMakeLists.txt"
   "/home/ryz2/catkin_ws/src/libtorch_demo/CMakeLists.txt"
   "/home/ryz2/catkin_ws/src/libtorch_demo/package.xml"
+  "/home/ryz2/catkin_ws/src/libtorch_demo/src/ColisionDetector/CMakeLists.txt"
   "/opt/ros/noetic/share/catkin/cmake/all.cmake"
   "/opt/ros/noetic/share/catkin/cmake/assert.cmake"
   "/opt/ros/noetic/share/catkin/cmake/atomic_configure_file.cmake"
@@ -193,6 +194,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "gtest/googlemock/CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/googletest/CMakeFiles/CMakeDirectoryInformation.cmake"
   "libtorch_demo/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "libtorch_demo/src/ColisionDetector/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -222,4 +224,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "libtorch_demo/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "libtorch_demo/CMakeFiles/roscpp_generate_messages_lisp.dir/DependInfo.cmake"
   "libtorch_demo/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/DependInfo.cmake"
+  "libtorch_demo/src/ColisionDetector/CMakeFiles/ColisionDetector.dir/DependInfo.cmake"
   )

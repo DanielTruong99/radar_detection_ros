@@ -52,7 +52,9 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/libtorch_demo" TYPE FILE FILES "/home/ryz2/catkin_ws/src/libtorch_demo/package.xml")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/libtorch_demo/models" TYPE FILE FILES "/home/ryz2/catkin_ws/src/libtorch_demo/models/colision_detector.pt")
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("/home/ryz2/catkin_ws/build/libtorch_demo/src/ColisionDetector/cmake_install.cmake")
+
 endif()
 

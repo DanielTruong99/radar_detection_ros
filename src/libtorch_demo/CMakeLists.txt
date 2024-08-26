@@ -12,6 +12,9 @@ find_package(Torch REQUIRED)
 
 catkin_package()
 
+add_definitions(-D_GLIBCXX_USE_CXX11_ABI=1)
+add_subdirectory(src/ColisionDetector)
+
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${TORCH_INCLUDE_DIRS}
@@ -19,11 +22,4 @@ include_directories(
 
 add_executable(demo_torch_node src/demo_node.cpp)
 
-add_definitions(-D_GLIBCXX_USE_CXX11_ABI=1)
-target_link_libraries(demo_torch_node PUBLIC ${catkin_LIBRARIES} ${TORCH_LIBRARIES})
-
-message(STATUS "CATKIN_PACKAGE_SHARE_DESTINATION: ${CATKIN_PACKAGE_SHARE_DESTINATION}")
-
-install(FILES models/colision_detector.pt
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models
-)
+target_link_libraries(demo_torch_node PUBLIC ${catkin_LIBRARIES} ColisionDetector)
