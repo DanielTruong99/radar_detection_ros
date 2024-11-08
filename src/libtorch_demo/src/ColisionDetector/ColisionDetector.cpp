@@ -23,9 +23,6 @@ namespace colision_detector
         _model.to(at::kCPU);
         torch::NoGradGuard no_grad;
 
-        //! Create a tensor from the input data
-        torch::Tensor input_tensor = torch::tensor({0.0, 0.0, 0.0}).unsqueeze(0);
-        _inputs.push_back(input_tensor);
     }
 
     bool ColisionDetector::detectColision(float &v, float &alpha, float &d, float &threshold)
@@ -39,6 +36,13 @@ namespace colision_detector
         // torch::NoGradGuard no_grad;
 
         //! Create a tensor from the input data
+        static bool is_init = true;
+        if(is_init)
+        {
+            torch::Tensor input_tensor = torch::zeros({1, 3});
+            _inputs.push_back(input_tensor);
+            is_init = false;
+        }
         this->_updateInputs(v, alpha, d);
 
         //! Compute the network output
@@ -58,6 +62,13 @@ namespace colision_detector
             * Forward pass
         */
         //! Create a tensor from the input data
+        static bool is_init = true;
+        if (is_init)
+        {
+            torch::Tensor input_tensor = torch::zeros({1, 10});
+            _inputs.push_back(input_tensor);
+            is_init = false;
+        }
         this->_updateInputs(input);
 
         //! Compute the network output

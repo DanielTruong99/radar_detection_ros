@@ -30,9 +30,12 @@ namespace colision_detector
 
             inline void _updateInputs(std::vector<float> &input)
             {
-                torch::Tensor input_tensor = torch::tensor(input).unsqueeze(0);
-                _inputs.clear();
-                _inputs.push_back(input_tensor);
+                torch::Tensor tensor = _inputs[0].toTensor();
+                for (size_t index = 0; index < input.size(); index++)
+                {
+                    tensor[0][i] = input[i];
+                }
+                _inputs[0] = tensor;
             }
     };
 }

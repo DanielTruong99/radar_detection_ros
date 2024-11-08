@@ -1,3 +1,7 @@
 .build/
 .devel/
 .install/
+.catkin_tools/
+build/
+devel/
+install/
