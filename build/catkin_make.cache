@@ -1,2 +1,0 @@
-libtorch_demo
--DCMAKE_BUILD_TYPE=RelWithDebInfo -DCATKIN_DEVEL_PREFIX=/home/ryz2/DanielWorkspace/radar_detection_ros/devel -DCMAKE_INSTALL_PREFIX=/home/ryz2/DanielWorkspace/radar_detection_ros/install -G Unix Makefiles

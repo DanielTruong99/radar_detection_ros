@@ -13,7 +13,7 @@ namespace colision_detector
             ColisionDetector();
             
             bool detectColision(float& v, float& alpha, float& d, float& threshold);
-            std::vector<bool> checkRadarConfident(std::vector<float> &input, float &threshold = 0.5);
+            std::vector<bool> checkRadarConfident(std::vector<float> &input, float &threshold);
 
         private:
             torch::jit::script::Module _model;
@@ -33,7 +33,7 @@ namespace colision_detector
                 torch::Tensor tensor = _inputs[0].toTensor();
                 for (size_t index = 0; index < input.size(); index++)
                 {
-                    tensor[0][i] = input[i];
+                    tensor[0][index] = input[index];
                 }
                 _inputs[0] = tensor;
             }

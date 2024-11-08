@@ -53,7 +53,7 @@ namespace colision_detector
         return is_colision;
     }
 
-    std::vector<bool> checkRadarConfident(std::vector<float> &input, float &threshold = 0.5)
+    std::vector<bool> ColisionDetector::checkRadarConfident(std::vector<float> &input, float &threshold)
     {
         /*
             ! Run the model
@@ -72,7 +72,7 @@ namespace colision_detector
         this->_updateInputs(input);
 
         //! Compute the network output
-        torch::Tensor output = _model.forward(inputs).toTensor();
+        torch::Tensor output = _model.forward(_inputs).toTensor();
 
         //! Apply the threshold
         std::vector<bool> radar_confident;
