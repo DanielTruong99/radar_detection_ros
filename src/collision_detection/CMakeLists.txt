@@ -22,8 +22,13 @@ add_executable(demo_torch_node src/demo_node.cpp)
 target_link_libraries(demo_torch_node CollisionDetector)
 ament_target_dependencies(demo_torch_node rclcpp std_msgs)
 
+add_executable(demo_torch_node_02 src/demo_node_02.cpp)
+target_link_libraries(demo_torch_node_02 CollisionDetector)
+ament_target_dependencies(demo_torch_node_02 rclcpp std_msgs)
+
 # install executables
 install(TARGETS demo_torch_node DESTINATION lib/${PROJECT_NAME})
+install(TARGETS demo_torch_node_02 DESTINATION lib/${PROJECT_NAME})
 
 # install launch files
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})

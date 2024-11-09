@@ -67,15 +67,7 @@ namespace collision_detector
 
         //! Compute the network output
         auto logits = _model.forward(inputs).toTensor();
-        for (int i = 0; i < logits.size(1); i++)
-        {
-            RCLCPP_INFO(rclcpp::get_logger("collision_detector"), "Logit %d: %f", i, logits[0][i].item<float>());
-        }
         torch::Tensor probabilities = torch::sigmoid(logits);
-        for (int i = 0; i < probabilities.size(1); i++)
-        {
-            RCLCPP_INFO(rclcpp::get_logger("collision_detector"), "Probability %d: %f", i, probabilities[0][i].item<float>());
-        }
 
         //! Apply the threshold
         std::vector<bool> radar_confidence;
