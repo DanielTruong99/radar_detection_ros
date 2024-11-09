@@ -6,7 +6,7 @@
         "limitSymbolsToIncludedHeaders": false
       },
       "includePath": [
-        "/opt/ros/noetic/include/**",
+        "/opt/ros/humble/include/**",
         "/opt/openrobots/include/**",
         "/home/ryz2/catkin_ws/src/libtorch_demo/include/**",
         "/usr/include/**",

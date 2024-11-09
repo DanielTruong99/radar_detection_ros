@@ -1,8 +1,9 @@
-#include "ColisionDetector.h"
+#include "CollisionDetector.h"
 
-namespace colision_detector
+
+namespace collision_detector
 {
-    ColisionDetector::ColisionDetector()
+    CollisionDetector::CollisionDetector()
     {
         /*
             ! Load the model
@@ -15,17 +16,16 @@ namespace colision_detector
         {
             _model = torch::jit::load("/home/ryz2/catkin_ws/src/libtorch_demo/models/colision_detector.pt");
         }
-        catch(const c10::Error& e)
+        catch (const c10::Error &e)
         {
-            ROS_ERROR("Error loading the model: %s", e.what());
+            RCLCPP_ERROR(rclcpp::get_logger("collision_detector"), "Error loading the model: %s", e.what()); 
         }
         _model.eval();
         _model.to(at::kCPU);
         torch::NoGradGuard no_grad;
-
     }
 
-    bool ColisionDetector::detectColision(float &v, float &alpha, float &d, float &threshold)
+    bool CollisionDetector::detectCollision(float &v, float &alpha, float &d, float &threshold)
     {
         /*
             ! Run the model
@@ -37,7 +37,7 @@ namespace colision_detector
 
         //! Create a tensor from the input data
         static bool is_init = true;
-        if(is_init)
+        if (is_init)
         {
             torch::Tensor input_tensor = torch::zeros({1, 3});
             _inputs.push_back(input_tensor);
@@ -53,7 +53,7 @@ namespace colision_detector
         return is_colision;
     }
 
-    std::vector<bool> ColisionDetector::checkRadarConfident(std::vector<float> &input, float &threshold)
+    std::vector<bool> CollisionDetector::checkRadarConfidence(std::vector<float> &input, float threshold)
     {
         /*
             ! Run the model
@@ -75,11 +75,11 @@ namespace colision_detector
         torch::Tensor output = _model.forward(_inputs).toTensor();
 
         //! Apply the threshold
-        std::vector<bool> radar_confident;
+        std::vector<bool> radar_confidence;
         for (int i = 0; i < output.size(1); i++)
         {
-            radar_confident.push_back(output[0][i].item<float>() > threshold);
+            radar_confidence.push_back(output[0][i].item<float>() > threshold);
         }
-        return radar_confident;
+        return radar_confidence;
     }
 }

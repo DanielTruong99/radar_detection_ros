@@ -84,7 +84,11 @@
         "slist": "cpp",
         "numbers": "cpp",
         "semaphore": "cpp",
-        "stop_token": "cpp"
+        "stop_token": "cpp",
+        "any": "cpp",
+        "codecvt": "cpp",
+        "regex": "cpp",
+        "future": "cpp"
     },
     "cmake.sourceDirectory": "/home/ryz2/catkin_ws/src/libtorch_demo"
 }
