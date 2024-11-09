@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 
     std::shared_ptr<collision_detector::CollisionDetector> collision_detector = std::make_shared<collision_detector::CollisionDetector>();
     std::vector<std::vector<float>> test_data = {
-        /* r1, r2, r3, r4, q4, q5, q6 */
+        /* r1, r2, r3, r4, q1, q2, q3, q4, q5, q6 */
         {1.0, 1.0, 0.26, 1.0, -0.524729, -0.414567, 0.848874, -1.92067, -0.425858, 1.71819},
         {0.48, 0.22, 1.0, 0.5, -0.484377, -0.520259, 0.65377, -1.09321, -2.93977, 0.0808745},
     };
@@ -43,17 +43,18 @@ int main(int argc, char **argv)
     {
         /* prepare input tensor */
         /* r1, r2, r3, r4, s_q4, c_q4, s_q5, c_q5, s_q6, c_q6*/
-        std::vector<float> input(data.begin(), data.begin() + 4);
-        for (size_t index = 4; index < data.size(); index++)
-        {
-            if (index % 2 != 0)
-            {
-                continue;
-            }
-
-            input.push_back(std::sin(data[index]));
-            input.push_back(std::cos(data[index + 1]));
-        }
+        std::vector<float> input = {
+            data[0],
+            data[1],
+            data[2],
+            data[3],
+            std::sin(data[7]),
+            std::cos(data[7]),
+            std::sin(data[8]),
+            std::cos(data[8]),
+            std::sin(data[9]),
+            std::cos(data[9]),
+        };
 
         /* check radar confidence */
         std::vector<bool> radar_confidence = collision_detector->checkRadarConfidence(data, 0.5);
