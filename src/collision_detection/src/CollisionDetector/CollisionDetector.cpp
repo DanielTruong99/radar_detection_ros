@@ -61,24 +61,20 @@ namespace collision_detector
             * Create a vector of IValues
             * Forward pass
         */
-
-        //! Create a tensor from the input data
-        torch::Tensor input_tensor = torch::zeros({1, static_cast<long>(input.size())});
-        this->_updateInputs(input, input_tensor);
-
-        //! Set the updated input tensor in _inputs
-        _inputs.clear();
-        _inputs.push_back(input_tensor);
+        torch::Tensor input_tensor = torch::from_blob(input.data(), {1, 10}).clone();
+        std::vector<torch::jit::IValue> inputs;
+        inputs.push_back(input_tensor);
 
         //! Compute the network output
-        torch::Tensor output = _model.forward(_inputs).toTensor();
+        auto logits = _model.forward(inputs).toTensor();
+        torch::Tensor probabilities = torch::sigmoid(logits);
 
         //! Apply the threshold
-        std::vector<bool> radar_confident;
-        for (int i = 0; i < output.size(1); i++)
+        std::vector<bool> radar_confidence;
+        for (int i = 0; i < probabilities.size(1); i++)
         {
-            radar_confident.push_back(output[0][i].item<float>() > threshold);
+            radar_confidence.push_back(probabilities[0][i].item<float>() > threshold);
         }
-        return radar_confident;
+        return radar_confidence;
     }
 }
