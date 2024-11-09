@@ -25,4 +25,7 @@ ament_target_dependencies(demo_torch_node rclcpp std_msgs)
 # install executables
 install(TARGETS demo_torch_node DESTINATION lib/${PROJECT_NAME})
 
+# install launch files
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
+
 ament_package()

@@ -14,7 +14,7 @@ namespace collision_detector
         */
         try
         {
-            _model = torch::jit::load("/home/ryz2/catkin_ws/src/libtorch_demo/models/colision_detector.pt");
+            _model = torch::jit::load("/home/ryz2/DanielWorkspace/radar_detection_ros/models/colision_detector.pt");
         }
         catch (const c10::Error &e)
         {
@@ -61,24 +61,27 @@ namespace collision_detector
             * Create a vector of IValues
             * Forward pass
         */
-        //! Create a tensor from the input data
-        static bool is_init = true;
-        if (is_init)
-        {
-            torch::Tensor input_tensor = torch::zeros({1, 10});
-            _inputs.push_back(input_tensor);
-            is_init = false;
-        }
-        this->_updateInputs(input);
+        torch::Tensor input_tensor = torch::from_blob(input.data(), {1, 10}).clone();
+        std::vector<torch::jit::IValue> inputs;
+        inputs.push_back(input_tensor);
 
         //! Compute the network output
-        torch::Tensor output = _model.forward(_inputs).toTensor();
+        auto logits = _model.forward(inputs).toTensor();
+        for (int i = 0; i < logits.size(1); i++)
+        {
+            RCLCPP_INFO(rclcpp::get_logger("collision_detector"), "Logit %d: %f", i, logits[0][i].item<float>());
+        }
+        torch::Tensor probabilities = torch::sigmoid(logits);
+        for (int i = 0; i < probabilities.size(1); i++)
+        {
+            RCLCPP_INFO(rclcpp::get_logger("collision_detector"), "Probability %d: %f", i, probabilities[0][i].item<float>());
+        }
 
         //! Apply the threshold
         std::vector<bool> radar_confidence;
-        for (int i = 0; i < output.size(1); i++)
+        for (int i = 0; i < probabilities.size(1); i++)
         {
-            radar_confidence.push_back(output[0][i].item<float>() > threshold);
+            radar_confidence.push_back(probabilities[0][i].item<float>() > threshold);
         }
         return radar_confidence;
     }
