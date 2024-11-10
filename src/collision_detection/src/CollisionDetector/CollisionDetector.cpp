@@ -22,36 +22,10 @@ namespace collision_detector
         }
         _model.eval();
         _model.to(at::kCPU);
+
         torch::NoGradGuard no_grad;
     }
 
-    bool CollisionDetector::detectCollision(float &v, float &alpha, float &d, float &threshold)
-    {
-        /*
-            ! Run the model
-            * Create a tensor from the input data
-            * Create a vector of IValues
-            * Forward pass
-        */
-        // torch::NoGradGuard no_grad;
-
-        //! Create a tensor from the input data
-        static bool is_init = true;
-        if (is_init)
-        {
-            torch::Tensor input_tensor = torch::zeros({1, 3});
-            _inputs.push_back(input_tensor);
-            is_init = false;
-        }
-        this->_updateInputs(v, alpha, d);
-
-        //! Compute the network output
-        torch::Tensor output = _model.forward(_inputs).toTensor();
-
-        //! Apply the threshold
-        bool is_colision = output.item<float>() > threshold;
-        return is_colision;
-    }
 
     std::vector<bool> CollisionDetector::checkRadarConfidence(std::vector<float> &input, float threshold)
     {
@@ -61,20 +35,33 @@ namespace collision_detector
             * Create a vector of IValues
             * Forward pass
         */
-        torch::Tensor input_tensor = torch::from_blob(input.data(), {1, 10}).clone();
-        std::vector<torch::jit::IValue> inputs;
-        inputs.push_back(input_tensor);
+
+        //! Create a tensor from the input data
+        torch::Tensor input_tensor = torch::zeros({1, static_cast<long>(input.size())});
+        this->_updateInputs(input, input_tensor);
+
+        //! Set the updated input tensor in _inputs
+        _inputs.clear();
+        _inputs.push_back(input_tensor);
+        auto temp = _inputs[0].toTensor();
+        for (int i = 0; i < temp.size(1); i++)
+        {
+            RCLCPP_INFO(rclcpp::get_logger("collision_detector"), "input elements %d: %f", i, temp[0][i].item<float>());
+        }
 
         //! Compute the network output
-        auto logits = _model.forward(inputs).toTensor();
-        torch::Tensor probabilities = torch::sigmoid(logits);
+        torch::Tensor output = _model.forward(_inputs).toTensor();
+        for (int i = 0; i < output.size(1); i++)
+        {
+            RCLCPP_INFO(rclcpp::get_logger("collision_detector"), "Output element %d: %f", i, output[0][i].item<float>());
+        }
 
         //! Apply the threshold
-        std::vector<bool> radar_confidence;
-        for (int i = 0; i < probabilities.size(1); i++)
+        std::vector<bool> radar_confident;
+        for (int i = 0; i < output.size(1); i++)
         {
-            radar_confidence.push_back(probabilities[0][i].item<float>() > threshold);
+            radar_confident.push_back(output[0][i].item<float>() > threshold);
         }
-        return radar_confidence;
+        return radar_confident;
     }
 }

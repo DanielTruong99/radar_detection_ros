@@ -24,6 +24,7 @@ public:
     }
 
 private:
+    int _temp;
 
 };
 
@@ -39,22 +40,20 @@ int main(int argc, char **argv)
         {0.48, 0.22, 1.0, 0.5, -0.484377, -0.520259, 0.65377, -1.09321, -2.93977, 0.0808745},
     };
 
-    for (auto &data : test_data)
+    // for (auto &data : test_data)
+    std::vector<float> data{10, 0};
+    for(int i = 0; i < 2; i++)
     {
         /* prepare input tensor */
         /* r1, r2, r3, r4, s_q4, c_q4, s_q5, c_q5, s_q6, c_q6*/
-        std::vector<float> input = {
-            data[0],
-            data[1],
-            data[2],
-            data[3],
-            std::sin(data[7]),
-            std::cos(data[7]),
-            std::sin(data[8]),
-            std::cos(data[8]),
-            std::sin(data[9]),
-            std::cos(data[9]),
-        };
+        if(i == 0)
+        {
+            data = {1.0, 1.0, 0.26, 1.0, 0, -1, 0, 1, 0, -1};
+        }
+        else
+        {
+            data = {0.48, 0.22, 1.0, 0.5, 0, -1, 0, 1, 0, 1};
+        }
 
         /* check radar confidence */
         std::vector<bool> radar_confidence = collision_detector->checkRadarConfidence(data, 0.5);

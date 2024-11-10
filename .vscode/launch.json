@@ -8,7 +8,7 @@
             "name": "ROS: Launch",
             "type": "ros",
             "request": "launch",
-            "target": "/home/ryz2/DanielWorkspace/radar_detection_ros/install/collision_detection/share/collision_detection/launch/launch.py"
+            "target": "/home/ryz2/DanielWorkspace/radar_detection_ros/install/collision_detection/share/collision_detection/launch/launch_02.py"
         },
         {
             "name": "C++ Debugger",
